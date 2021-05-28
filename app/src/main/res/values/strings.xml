@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BioSecure</string>
+    <string name="loginButton">Login</string>
+    <string name="userTextField">Enter Username</string>
+</resources>
