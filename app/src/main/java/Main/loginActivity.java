@@ -13,7 +13,6 @@ public class loginActivity extends AppCompatActivity {
     Button loginButton;
     EditText userText, passwordText;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,7 @@ public class loginActivity extends AppCompatActivity {
                 if (userText.getText().toString().equals("admin") &&
                 passwordText.getText().toString().equals("1234")) {
                     Toast.makeText(getApplicationContext(),"Login successful", Toast.LENGTH_SHORT).show();
-                } else Toast.makeText(getApplicationContext(), "Login Failed!\n Wrong credentials used!", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(getApplicationContext(), "Login Failed!\nWrong credentials used!", Toast.LENGTH_SHORT).show();
             }
         });
     }
