@@ -1,9 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Main.RegisterUser">
+    android:background="@drawable/border"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="30dp"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/BioSecure"
+        android:textSize="32sp"
+        android:textColor="#00FF00"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/border"/>
+    <EditText
+        android:id="@+id/full_nameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/border"
+        android:hint="@string/full_name"
+        android:importantForAutofill="no"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="#00FF00"
+        android:textColorHint="#00FF00"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/emailText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/border"
+        android:hint="@string/emailLabel"
+        android:importantForAutofill="no"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="#00FF00"
+        android:textColorHint="#00FF00"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/passwordText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
+        android:hint="@string/enter_password"
+        android:importantForAutofill="no"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="#00FF00"
+        android:textColorHint="#00FF00"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/confirmPasswordText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
+        android:hint="@string/confirm_password"
+        android:importantForAutofill="no"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="#00FF00"
+        android:textColorHint="#00FF00"
+        android:textSize="13sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/genderGroup"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/maleGender"
+            android:hint="@string/maleGenderLabel"
+            android:textColorHint="#00FF00"
+            android:layout_gravity="left"
+            android:layout_marginLeft="30dp"/>
+
+        <RadioButton
+            android:id="@+id/femaleGender"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/femaleGenderLabel"
+            android:textColorHint="#00FF00"
+            android:layout_gravity="right"
+            android:layout_marginLeft="50dp"/>
+
+    </RadioGroup>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerButton"
+        android:text="@string/register"
+        android:textColor="#00FF00"
+        android:layout_marginTop="175dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/black"/>
+
+</LinearLayout>

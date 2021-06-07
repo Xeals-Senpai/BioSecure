@@ -2,4 +2,13 @@
     <string name="app_name">BioSecure</string>
     <string name="loginButton">Login</string>
     <string name="userTextField">Enter Username</string>
+    <string name="login">Login</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="label1">Enter Username, Email or Mobile number</string>
+    <string name="register">Register</string>
+    <string name="full_name">Enter full name</string>
+    <string name="emailLabel">Enter email address</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="maleGenderLabel">Male</string>
+    <string name="femaleGenderLabel">Female</string>
 </resources>
