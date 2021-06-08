@@ -56,9 +56,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         String email = editEmail.getText().toString().trim();
         String passwd = editPasswd.getText().toString().trim();
         String conPasswd = editConPasswd.getText().toString().trim();
-        int selectedID = genderGroup.getCheckedRadioButtonId();
-        RadioButton genderButton = findViewById(selectedID);
-        String gender = genderButton.getText().toString().trim();
+        String gender = getUsergender();
 
         if (full_name.isEmpty()) {
             editFname.setError("Full name is required!");
@@ -113,5 +111,10 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
+    }
+
+    private String getUsergender() {
+        RadioGroup rg = findViewById(R.id.genderGroup);
+        return ((RadioButton) findViewById(rg.getCheckedRadioButtonId())).getText().toString();
     }
 }

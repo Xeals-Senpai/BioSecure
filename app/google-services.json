@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "956269083417",
+    "project_id": "bio-234f8",
+    "storage_bucket": "bio-234f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956269083417:android:a426282e12d44adb4ee388",
+        "android_client_info": {
+          "package_name": "com.example.biosecure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956269083417-k34tueqvnrpapj0cbjkuc9otkf2vin6f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRg4KcbxLEeVPXly7huZX5pDUjgqIMjGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956269083417-k34tueqvnrpapj0cbjkuc9otkf2vin6f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
