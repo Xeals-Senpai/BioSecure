@@ -20,13 +20,30 @@
         android:padding="10dp"
         android:layout_gravity="center"
         android:background="@drawable/border"/>
+
     <EditText
         android:id="@+id/full_nameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:background="@drawable/border"
+        android:inputType="text"
         android:hint="@string/full_name"
+        android:importantForAutofill="no"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="#00FF00"
+        android:textColorHint="#00FF00"
+        android:textSize="13sp"/>
+
+    <EditText
+        android:id="@+id/ageText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
+        android:inputType="number"
+        android:hint="@string/enter_your_age"
         android:importantForAutofill="no"
         android:padding="10dp"
         android:textAlignment="center"
@@ -40,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@drawable/border"
+        android:inputType="textEmailAddress"
         android:hint="@string/emailLabel"
         android:importantForAutofill="no"
         android:padding="10dp"
@@ -54,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/border"
+        android:inputType="textPassword"
         android:hint="@string/enter_password"
         android:importantForAutofill="no"
         android:padding="10dp"
@@ -68,6 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/border"
+        android:inputType="textPassword"
         android:hint="@string/confirm_password"
         android:importantForAutofill="no"
         android:padding="10dp"
@@ -75,34 +95,6 @@
         android:textColor="#00FF00"
         android:textColorHint="#00FF00"
         android:textSize="13sp"/>
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/genderGroup"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/maleGender"
-            android:hint="@string/maleGenderLabel"
-            android:textColorHint="#00FF00"
-            android:layout_gravity="left"
-            android:layout_marginStart="30dp"
-            android:checked="false"/>
-
-        <RadioButton
-            android:id="@+id/femaleGender"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/femaleGenderLabel"
-            android:textColorHint="#00FF00"
-            android:layout_gravity="right"
-            android:layout_marginStart="50dp"
-            android:checked="false"/>
-
-    </RadioGroup>
 
     <Button
         android:layout_width="match_parent"

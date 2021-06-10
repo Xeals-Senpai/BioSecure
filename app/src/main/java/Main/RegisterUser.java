@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.*;
 
@@ -17,8 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
-    private EditText editFname, editPasswd, editEmail, editConPasswd;
-    private RadioGroup genderGroup;
+    private EditText editFname, editAge, editPasswd, editEmail, editConPasswd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +29,11 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
         TextView apptitle = findViewById(R.id.BioSecure);
         editFname = findViewById(R.id.full_nameText);
+        editAge = findViewById(R.id.ageText);
         editPasswd = findViewById(R.id.passwordText);
         editConPasswd = findViewById(R.id.confirmPasswordText);
         editEmail = findViewById(R.id.emailText);
-        genderGroup = findViewById(R.id.genderGroup);
+
         Button registerButton = findViewById(R.id.registerButton);
 
         apptitle.setOnClickListener(this);
@@ -53,18 +54,28 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
     private void registerUser() {
         String full_name = editFname.getText().toString().trim();
+        String age = editAge.getText().toString().trim();
         String email = editEmail.getText().toString().trim();
         String passwd = editPasswd.getText().toString().trim();
         String conPasswd = editConPasswd.getText().toString().trim();
-        String gender = getUsergender();
 
         if (full_name.isEmpty()) {
             editFname.setError("Full name is required!");
             editFname.requestFocus();
         }
 
+        if (age.isEmpty()) {
+            editAge.setError("Age is required");
+            editAge.requestFocus();
+        }
+
         if (email.isEmpty()) {
             editEmail.setError("Email is required");
+            editEmail.requestFocus();
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            editEmail.setError("Please provide a valid email");
             editEmail.requestFocus();
         }
 
@@ -94,7 +105,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            UserAccount user = new UserAccount(full_name, email, gender);
+                            UserAccount user = new UserAccount(full_name, email, age);
                             FirebaseDatabase.getInstance().getReference("UserAccount")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -111,10 +122,5 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
-    }
-
-    private String getUsergender() {
-        RadioGroup rg = findViewById(R.id.genderGroup);
-        return ((RadioButton) findViewById(rg.getCheckedRadioButtonId())).getText().toString();
     }
 }

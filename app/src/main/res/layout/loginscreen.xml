@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
         android:background="@drawable/border"
-        android:hint="@string/label1"
+        android:hint="@string/emailLabel"
         android:importantForAutofill="no"
         android:padding="10dp"
         android:textAlignment="center"
