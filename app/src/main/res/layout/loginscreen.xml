@@ -7,7 +7,7 @@
     android:background="@drawable/border"
     android:paddingLeft="30dp"
     android:paddingRight="30dp"
-    android:paddingTop="30dp"
+    android:paddingTop="15dp"
     android:orientation="vertical">
 
     <TextView
@@ -18,18 +18,37 @@
         android:textSize="32sp"
         android:textColor="#00FF00"
         android:padding="10dp"
-        android:layout_gravity="center"
-        android:background="@drawable/border"/>
+        android:layout_gravity="center"/>
+    <ImageView
+        android:id="@+id/fingerprintImage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="60dp"
+        android:maxHeight="350dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/border"
+        android:src="@drawable/ic_fingerprint_foreground" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/biometricLabel"
+        android:textColorHint="@color/lime_green"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/userText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
         android:background="@drawable/border"
         android:hint="@string/emailLabel"
         android:importantForAutofill="no"
         android:padding="10dp"
+        android:layout_marginTop="15dp"
         android:textAlignment="center"
         android:textColor="#00FF00"
         android:textColorHint="#00FF00"
@@ -57,8 +76,7 @@
         android:id="@+id/registerButton"
         android:text="@string/register"
         android:textColor="#00FF00"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/black" />
 
     <Button
@@ -68,8 +86,6 @@
         android:text="@string/login"
         android:textColor="#00FF00"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="15dp"
         android:backgroundTint="@color/black"/>
-
 
 </LinearLayout>

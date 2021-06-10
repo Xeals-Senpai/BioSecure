@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.Main">
 
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
-        <activity android:name="Main.RegisterUser"></activity>
-        <activity android:name="Main.loginActivity">
+        <activity android:name="main.RegisterUser"></activity>
+        <activity android:name="main.loginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

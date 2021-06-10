@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

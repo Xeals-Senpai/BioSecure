@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 public class UserAccount {
     public String fullname, email, age;
