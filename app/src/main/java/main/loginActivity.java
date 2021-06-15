@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import java.util.concurrent.Executor;
 public class loginActivity extends AppCompatActivity implements View.OnClickListener {
     private Button loginButton, registerButton;
     private EditText userText, passwordText;
+    private TextView biometricText;
     private ImageView fprint;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
@@ -37,25 +39,34 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         registerButton = findViewById(R.id.registerButton);
         userText = findViewById(R.id.userText);
         passwordText = findViewById(R.id.passwordText);
+
         fprint = findViewById(R.id.fingerprintImage);
+        biometricText = findViewById(R.id.biometricLabel);
 
         executor = ContextCompat.getMainExecutor(this);
         biometricPrompt = new BiometricPrompt(loginActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull @NotNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
+                biometricText.setText(String.format("Authentication error: %s", errString));
+                Toast.makeText(getApplicationContext(), "Authentication error: "+errString, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onAuthenticationSucceeded(@NonNull @NotNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
+                biometricText.setText(R.string.authsuccess);
+                Toast.makeText(getApplicationContext(), R.string.authsuccess, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
+                biometricText.setText(R.string.authfailed);
+                Toast.makeText(getApplicationContext(), R.string.authfailed, Toast.LENGTH_SHORT).show();
             }
         });
+
         loginButton.setOnClickListener(this);
         registerButton.setOnClickListener(this);
         fprint.setOnClickListener(this);
