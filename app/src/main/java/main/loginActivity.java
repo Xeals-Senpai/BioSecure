@@ -5,6 +5,7 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.biometric.BiometricPrompt;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.Main.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -29,6 +34,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
     private Executor executor;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +73,12 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Biometric Authentication")
+                .setSubtitle("Login using fingerprint authentication")
+                .setNegativeButtonText("Login using email/password instead")
+                .build();
+
         loginButton.setOnClickListener(this);
         registerButton.setOnClickListener(this);
         fprint.setOnClickListener(this);
@@ -77,15 +89,49 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.loginButton:
-                if (userText.getText().toString().equals("admin") &&
-                        passwordText.getText().toString().equals("1234")) {
-                    Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(getApplicationContext(), "Login Failed!\nWrong credentials used!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.registerButton:
                 startActivity(new Intent(this, RegisterUser.class));
                 break;
+            case R.id.fingerprintImage:
+                biometricPrompt.authenticate(promptInfo);
+                break;
         }
+    }
+
+    private void userLogin() {
+        String email = userText.getText().toString().trim();
+        String passwd = passwordText.getText().toString().trim();
+
+        if (email.isEmpty()) {
+            userText.setError("Email is required");
+            userText.requestFocus();
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            userText.setError("Please provide a valid email address!");
+            userText.requestFocus();
+        }
+
+        if (passwd.isEmpty()) {
+            passwordText.setError("Password is required to login");
+            passwordText.requestFocus();
+        }
+
+        if (passwd.length() < 8) {
+            passwordText.setError("Password length must be at least 8 chars long");
+            passwordText.requestFocus();
+        }
+
+        mAuth.signInWithEmailAndPassword(email, passwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Failed to login! Please check your credentials", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 }
