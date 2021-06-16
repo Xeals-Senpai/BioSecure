@@ -37,7 +37,7 @@
         android:id="@+id/biometricLabel"
         android:padding="10dp"
         android:layout_marginTop="10dp"
-        android:hint="@string/biometricLabel"
+        android:hint="@string/label2"
         android:textColorHint="@color/lime_green"
         android:textAlignment="center" />
 
@@ -74,19 +74,19 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/registerButton"
-        android:text="@string/register"
-        android:textColor="#00FF00"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/black" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/loginButton"
         android:text="@string/login"
         android:textColor="#00FF00"
         android:layout_marginTop="5dp"
         android:backgroundTint="@color/black"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerButton"
+        android:text="@string/register"
+        android:textColor="#00FF00"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/black" />
 
 </LinearLayout>

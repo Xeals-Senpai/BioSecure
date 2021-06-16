@@ -10,7 +10,7 @@
     <string name="emailLabel">Enter email address</string>
     <string name="confirm_password">Confirm password</string>
     <string name="enter_your_age">Enter your age</string>
-    <string name="biometricLabel">Press the icon to use the biometric scanner</string>
+    <string name="label2">Enter your credentials and biometric details</string>
     <string name="authsuccess">Authentication successful!</string>
     <string name="authfailed">Authentication failed!</string>
 </resources>

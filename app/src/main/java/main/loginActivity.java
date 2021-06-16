@@ -30,7 +30,6 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     private Button loginButton, registerButton;
     private EditText userText, passwordText;
     private TextView biometricText;
-    private ImageView fprint;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
     private Executor executor;
@@ -46,7 +45,8 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         userText = findViewById(R.id.userText);
         passwordText = findViewById(R.id.passwordText);
 
-        fprint = findViewById(R.id.fingerprintImage);
+        mAuth = FirebaseAuth.getInstance();
+
         biometricText = findViewById(R.id.biometricLabel);
 
         executor = ContextCompat.getMainExecutor(this);
@@ -54,21 +54,18 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onAuthenticationError(int errorCode, @NonNull @NotNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                biometricText.setText(String.format("Authentication error: %s", errString));
                 Toast.makeText(getApplicationContext(), "Authentication error: "+errString, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onAuthenticationSucceeded(@NonNull @NotNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                biometricText.setText(R.string.authsuccess);
                 Toast.makeText(getApplicationContext(), R.string.authsuccess, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                biometricText.setText(R.string.authfailed);
                 Toast.makeText(getApplicationContext(), R.string.authfailed, Toast.LENGTH_SHORT).show();
             }
         });
@@ -76,12 +73,11 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Biometric Authentication")
                 .setSubtitle("Login using fingerprint authentication")
-                .setNegativeButtonText("Login using email/password instead")
+                .setNegativeButtonText("cancel")
                 .build();
 
         loginButton.setOnClickListener(this);
         registerButton.setOnClickListener(this);
-        fprint.setOnClickListener(this);
 
     }
 
@@ -89,12 +85,10 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.loginButton:
+                biometricPrompt.authenticate(promptInfo);
                 break;
             case R.id.registerButton:
                 startActivity(new Intent(this, RegisterUser.class));
-                break;
-            case R.id.fingerprintImage:
-                biometricPrompt.authenticate(promptInfo);
                 break;
         }
     }
