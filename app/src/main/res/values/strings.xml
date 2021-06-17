@@ -13,4 +13,9 @@
     <string name="label2">Enter your credentials and biometric details</string>
     <string name="authsuccess">Authentication successful!</string>
     <string name="authfailed">Authentication failed!</string>
+    <string name="userName">Full name:</string>
+    <string name="userAge">Age:</string>
+    <string name="userEmail">Email:</string>
+    <string name="logoutButton">logout</string>
+    <string name="welcomeHint">Welcome User</string>
 </resources>
