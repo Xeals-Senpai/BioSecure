@@ -9,7 +9,6 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,6 +60,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             public void onAuthenticationSucceeded(@NonNull @NotNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getApplicationContext(), R.string.authsuccess, Toast.LENGTH_SHORT).show();
+                userLogin();
             }
 
             @Override
@@ -88,7 +88,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                 biometricPrompt.authenticate(promptInfo);
                 break;
             case R.id.registerButton:
-                startActivity(new Intent(this, RegisterUser.class));
+                startActivity(new Intent(this, registerUser.class));
                 break;
         }
     }
@@ -121,7 +121,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-
+                    startActivity(new Intent(loginActivity.this, userActivity.class));
                 } else {
                     Toast.makeText(getApplicationContext(), "Failed to login! Please check your credentials", Toast.LENGTH_LONG).show();
                 }

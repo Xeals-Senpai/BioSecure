@@ -16,7 +16,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
+public class registerUser extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private EditText editFname, editAge, editPasswd, editEmail, editConPasswd;
 
@@ -105,14 +105,15 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            UserAccount user = new UserAccount(full_name, email, age);
-                            FirebaseDatabase.getInstance().getReference("UserAccount")
+                            userAccount user = new userAccount(full_name, email, age);
+                            FirebaseDatabase.getInstance().getReference("userAccount")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(getApplicationContext(),"User has been registered successfully!", Toast.LENGTH_LONG).show();
+                                        startActivity(new Intent(registerUser.this, loginActivity.class));
                                     } else
                                         Toast.makeText(getApplicationContext(),"User has been registered unsuccessfully! Please try again!", Toast.LENGTH_LONG).show();
                                 }

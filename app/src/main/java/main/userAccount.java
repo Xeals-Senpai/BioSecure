@@ -1,11 +1,11 @@
 package main;
 
-public class UserAccount {
+public class userAccount {
     public String fullname, email, age;
 
-    public UserAccount() {}
+    public userAccount() {}
 
-    public UserAccount(String full_name, String email, String age) {
+    public userAccount(String full_name, String email, String age) {
         this.fullname = full_name;
         this.email = email;
         this.age = age;

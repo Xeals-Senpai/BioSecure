@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
         <activity android:name="main.userActivity"></activity>
-        <activity android:name="main.RegisterUser" />
+        <activity android:name="main.registerUser" />
         <activity android:name="main.loginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

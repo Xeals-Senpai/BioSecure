@@ -25,8 +25,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/welcomeLabel"
         android:layout_marginTop="150dp"
-        android:hint="@string/welcomeHint"
-        android:textColorHint="@color/lime_green"
+        android:text="@string/welcomeHint"
+        android:textColor="@color/lime_green"
         android:textAlignment="center"
         android:padding="10dp"/>
 
@@ -35,10 +35,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/userName"
         android:padding="10dp"
-        android:hint="@string/userName"
-        android:textColorHint="@color/lime_green"
-        android:textColor="@color/lime_green"
-        android:textAlignment="textStart" />
+        android:text="@string/userName"
+        android:textColor="@color/lime_green"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -46,10 +44,8 @@
         android:id="@+id/userAge"
         android:padding="10dp"
         android:layout_marginTop="10dp"
-        android:hint="@string/userAge"
-        android:textColorHint="@color/lime_green"
-        android:textColor="@color/lime_green"
-        android:textAlignment="textStart" />
+        android:text="@string/userAge"
+        android:textColor="@color/lime_green"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -57,10 +53,8 @@
         android:id="@+id/userEmail"
         android:padding="10dp"
         android:layout_marginTop="10dp"
-        android:hint="@string/userEmail"
-        android:textColorHint="@color/lime_green"
-        android:textColor="@color/lime_green"
-        android:textAlignment="textStart" />
+        android:text="@string/userEmail"
+        android:textColor="@color/lime_green"/>
 
     <Button
         android:layout_width="match_parent"
